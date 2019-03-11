@@ -15,7 +15,7 @@ body {
 
 .center {
 	margin: auto;
-	width: 80%;
+	width: 85%;
 	padding: 10px;
 }
 
@@ -34,7 +34,18 @@ body {
 }
 
 .filter .item p {
+  font-size: 16px;
+}
+
+.filter .item .italic {
+  font-style: italic;
   font-size: 15px;
+}
+
+.filter .item .description {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0px 10px 0px 0px;
 }
 
 .filter form{
