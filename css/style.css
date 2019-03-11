@@ -1,3 +1,9 @@
+/**
+ * CSS to Filter module to subject WAP 2019
+ * 
+ * @author  Tomáš Blažek (xblaze31)
+ */
+
 body {
   background-color: rgb(230, 255, 255);
 }
@@ -21,6 +27,10 @@ body {
 	font-family: verdana;
   background-color: rgb(51, 255, 255);
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.filter ul {
+  list-style-type: none
 }
 
 .filter .item p {

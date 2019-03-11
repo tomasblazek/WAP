@@ -1,3 +1,15 @@
+/**
+ * Filter module to subject WAP 2019
+ * 
+ * @author 	Tomáš Blažek (xblaze31)
+ */
+
+/**
+ * Initialize and setup filter by JSON object and filter identifier.
+ *
+ * @param      {string}  		filterID        The filter id
+ * @param      {Object}  filterStructJSON  		The filter structure json (JSON object)
+ */
 function setupFilter(filterID,filterStructJSON){
 	var keys = Object.keys(filterStructJSON);
 	//init input values to empty
@@ -19,7 +31,12 @@ function setupFilter(filterID,filterStructJSON){
 };
 
 
-// Main filter function
+/**
+ * Main filter function
+ *
+ * @param      {Object}  element           The element
+ * @param      {Object}  filterStructJSON  The filter structure json (JSON object)
+ */
 function filter(element, filterStructJSON){
 	var keys = Object.keys(filterStructJSON);
 	var searchArea = element.parentElement.parentElement;
@@ -80,6 +97,12 @@ function filter(element, filterStructJSON){
 
 };
 
+/**
+ * Function generate form elements by given JSON.
+ *
+ * @param      {Object}  form              The form
+ * @param      {Object}  filterStructJSON  The filter structure json (JSON object)
+ */
 function generateInputs(form, filterStructJSON){
 	var keys = Object.keys(filterStructJSON);
 	var element;
@@ -113,6 +136,14 @@ function generateInputs(form, filterStructJSON){
 	});
 }
 
+/**
+ * Adds an input text element to form.
+ *
+ * @param      {Object}  	form              The form
+ * @param      string  		name              The name of element
+ * @param      {Object}  	filterStructJSON  The filter structure json (JSON object)
+ * @return     {Object}  	Return  HTML object of created select element.
+ */
 function addInputText(form, name, filterStructJSON){
 	var newInputText = document.createElement("input");
 	newInputText.setAttribute("name",name);
@@ -129,6 +160,14 @@ function addInputText(form, name, filterStructJSON){
 	return newInputText;
 }
 
+/**
+ * Adds an input range element to form.
+ *
+ * @param      {Object}  	form              The form
+ * @param      string  		name              The name of element
+ * @param      {Object}  	filterStructJSON  The filter structure json (JSON object)
+ * @return     {Object}  	Return  HTML object of created select element.
+ */
 function addInputRange(form, name, filterStructJSON){
 	var newInputFrom = document.createElement("input");
 	newInputFrom.setAttribute("name", name);
@@ -161,10 +200,10 @@ function addInputRange(form, name, filterStructJSON){
 /**
  * Adds an input select element to form.
  *
- * @param      HTML object  	form              The form
- * @param      string  			name              The name of element
- * @param      JSON object  	filterStructJSON  The filter structure json
- * @return     HTML object  	Return  HTML object of created select element.
+ * @param      {Object}  	form              The form (HTML object)
+ * @param      string  		name              The name of element
+ * @param      {Object}  	filterStructJSON  The filter structure json (JSON object)
+ * @return     {Object}  	Return  HTML object of created select element.
  */
 function addInputSelect(form, name, filterStructJSON){
 	var newInputSelect = document.createElement("select");
