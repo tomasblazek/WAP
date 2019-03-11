@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WAP - Výběr zboží</title>
+<link rel='stylesheet' type='text/css' href='css/style.css'>
+<script src='scripts.js'></script>
+</head>
+<body>
+
+<h1 class='title-1'>WAP - Výběr zboží demo</h1>
+<div id='my-fitler1' class='center filter'>
+	<ul>
+	  <li class='item'>Item 1
+	  	<div>
+	  		<p class='name'>
+	  			<span class='description'>Name:</span>Coffe
+	  		</p>
+	  		<p class='size'>
+	  			<span class='description'>Size:</span>500<span class='italic'> g</span>
+	  		</p>
+	  	</div>
+	  </li>
+	  <li class='item'>Item 2
+	  	<div>
+	    	<p class='name'>
+	    		<span class='description'>Name:</span>Tea
+	    	</p>
+	  		<p class='size'>
+	  			<span class='description'>Size:</span>2<span class='italic'> cups</span>
+	  		</p>
+	  		<p class='type'>
+	  			<span class='description'>Type:</span>Small
+	  		</p>
+	  	</div>
+	  </li>
+	  <li class='item'>Item 3
+	  	  <div>
+	    	<p class='name'>
+	    		<span class='description'>Name:</span>Milk
+	    	</p>
+	  		<p class='size'>
+	  			<span class='description'>Size:</span>10<span class='italic'> bottles</span></p>
+	  		<p class='type'>
+	  			<span class='description'>Type:</span>Medium
+	  		</p>
+	  	  </div>
+	  </li>
+	  <li class='item'>Item 4
+	  	<div>
+	  		<p class='name'>
+	  			<span class='description'>Name:</span>Butter</p>
+	  		<p class='size'>
+	  			<span class='description'>Size:</span>140<span class='italic'> g</span>
+	  		</p>
+	  	</div>
+	  </li>
+	  <li class='item'>Item 5
+	  	<div>
+	    	<p class='name'>
+	    		<span class='description'>Name:</span>Cheese
+	    	</p>
+	  		<p class='size'>
+	  			<span class='description'>Size:</span>2<span class='italic'> g</span>
+	  		</p>
+	  		<p class='type'>
+	  			<span class='description'>Type:</span>Premium
+	  		</p>
+	  	</div>
+	  </li>
+	  <li class='item'>Item 6
+	  	  <div>
+	    	<p class='name'>
+	    		<span class='description'>Name:</span>Pizza
+	    	</p>
+	  		<p class='size'>
+	  			<span class='description'>Size:</span>750<span class='italic'> g</span>
+	  		</p>
+	  		<p class='type'>
+	  			<span class='description'>Type:</span>Medium
+	  		</p>
+	  	  </div>
+	  </li>
+	  <li class='item'>Item 7
+	  	<div>
+	  		<p class='name'>
+	  			<span class='description'>Name:</span>Cheese Cake
+	  		</p>
+	  		<p class='size'>
+	  			<span class='description'>Size:</span>500<span class='italic'> g</span>
+	  		</p>
+	  	</div>
+	  </li>
+	  <li class='item'>Item 8
+	  	<div>
+	    	<p class='name'>
+	    		<span class='description'>Name:</span>Chocolate Cake
+	    	</p>
+	  		<p class='size'>
+	  			<span class='description'>Size:</span>2<span class='italic'> pieces</span>
+	  		</p>
+	  		<p class='type'>
+	  			<span class='description'>Type:</span>Small
+	  		</p>
+	  	</div>
+	  </li>
+	  <li class='item'>Item 9
+	  	  <div>
+	    	<p class='name'>
+	    		<span class='description'>Name:</span>Cocoa
+	    	</p>
+	  		<p class='size'>
+	  			<span class='description'>Size:</span>100<span class='italic'> g</span>
+	  		</p>
+	  		<p class='type'>
+	  			<span class='description'>Type:</span>Medium
+	  		</p>
+	  	  </div>
+	  </li>
+	</ul>
+</div>
+
+
+<script>
+var myFitler1Structure = {
+	"name": {
+		"label": "Název",
+		"type": "text",
+	},
+	"size": {
+		"labelFrom": "Od",
+		"labelTo": "Do",
+		"type": "number",
+	},
+	 "type": {
+		"label": "Typ",
+		"type": "select",
+	},
+};
+
+window.onload = setupFilter("my-fitler1", myFitler1Structure);
+</script>
+
+</body>
+</html>
