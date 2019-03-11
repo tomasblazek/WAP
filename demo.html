@@ -8,7 +8,7 @@
 <body>
 
 <h1 class='title-1'>WAP - Výběr zboží demo</h1>
-<div id='my-fitler1' class='center'>
+<div id='my-fitler1' class='center filter'>
 	<ul>
 	  <li class='item'>Item 1
 	  	<div>
@@ -21,16 +21,81 @@
 	  	<div>
 	    	<p class='name'>Tea</p>
 	  		<p class='size'>2</p>
+	  		<p class='type'>Small</p>
 	  	</div>
 	  </li>
 	  <li class='item'>Item 3
 	  	  <div>
 	    	<p class='name'>Milk</p>
 	  		<p class='size'>10</p>
+	  		<p class='type'>Medium</p>
+	  	  </div>
+	  </li>
+	  <li class='item'>Item 1
+	  	<div>
+	  		<p class='name'>Coffe</p>
+	  		<p class='name'>Coffe2</p>
+	  		<p class='size'>5</p>
+	  	</div>
+	  </li>
+	  <li class='item'>Item 2
+	  	<div>
+	    	<p class='name'>Tea</p>
+	  		<p class='size'>2</p>
+	  		<p class='type'>Small</p>
+	  	</div>
+	  </li>
+	  <li class='item'>Item 3
+	  	  <div>
+	    	<p class='name'>Milk</p>
+	  		<p class='size'>10</p>
+	  		<p class='type'>Medium</p>
+	  	  </div>
+	  </li>
+	  <li class='item'>Item 1
+	  	<div>
+	  		<p class='name'>Coffe</p>
+	  		<p class='name'>Coffe2</p>
+	  		<p class='size'>5</p>
+	  	</div>
+	  </li>
+	  <li class='item'>Item 2
+	  	<div>
+	    	<p class='name'>Tea</p>
+	  		<p class='size'>2</p>
+	  		<p class='type'>Small</p>
+	  	</div>
+	  </li>
+	  <li class='item'>Item 3
+	  	  <div>
+	    	<p class='name'>Milk</p>
+	  		<p class='size'>10</p>
+	  		<p class='type'>Medium</p>
 	  	  </div>
 	  </li>
 	</ul>
 </div>
+
+
+<script>
+var myFitler1Structure = {
+	"name": {
+		"label": "Název",
+		"type": "text",
+	},
+	"size": {
+		"labelFrom": "Od",
+		"labelTo": "Do",
+		"type": "number",
+	},
+	 "type": {
+		"label": "Typ",
+		"type": "select",
+	}
+};
+
+window.onload = setupFilter("my-fitler1", myFitler1Structure);
+</script>
 
 </body>
 </html>
