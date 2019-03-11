@@ -84,16 +84,16 @@ function generateInputs(form, filterStructJSON){
 	var keys = Object.keys(filterStructJSON);
 	var element;
 
-	keys.forEach(function(elem) {
-		switch (filterStructJSON[elem].type){
+	keys.forEach(function(name) {
+		switch (filterStructJSON[name].type){
 			case "text":
-				element = addInputText(form, elem, filterStructJSON);
+				element = addInputText(form, name, filterStructJSON);
 				element.addEventListener("input", function(){
 					filter(this, filterStructJSON);
 				});
 				break;
 			case "number":
-				element = addInputRange(form, elem, filterStructJSON);
+				element = addInputRange(form, name, filterStructJSON);
 				element[0].addEventListener("input", function(){
 					filter(this, filterStructJSON);
 				});
@@ -102,25 +102,25 @@ function generateInputs(form, filterStructJSON){
 				});
 				break;
 			case "select":
-				element = addInputSelect(form, elem, filterStructJSON);
+				element = addInputSelect(form, name, filterStructJSON);
 				element.addEventListener("input", function(){
 					filter(this, filterStructJSON);
 				});
 				break;
 			default:
-				console.error("WAP Filter - Invalid type: " + filterStructJSON[elem].type + " (Possible types: text, number, select)")
+				console.error("WAP Filter - Invalid type: " + filterStructJSON[name].type + " (Possible types: text, number, select)")
 		}
 	});
 }
 
-function addInputText(form, elem, filterStructJSON){
+function addInputText(form, name, filterStructJSON){
 	var newInputText = document.createElement("input");
-	newInputText.setAttribute("name",elem);
+	newInputText.setAttribute("name",name);
 	newInputText.setAttribute("type", "text");
 
 	var label = document.createElement("label");
-	var labelText = document.createTextNode(filterStructJSON[elem].label);
-	label.setAttribute("for", elem);
+	var labelText = document.createTextNode(filterStructJSON[name].label);
+	label.setAttribute("for", name);
 	label.appendChild(labelText);
 
 	form.appendChild(label);
@@ -129,25 +129,25 @@ function addInputText(form, elem, filterStructJSON){
 	return newInputText;
 }
 
-function addInputRange(form, elem, filterStructJSON){
+function addInputRange(form, name, filterStructJSON){
 	var newInputFrom = document.createElement("input");
-	newInputFrom.setAttribute("name", elem);
+	newInputFrom.setAttribute("name", name);
 	newInputFrom.setAttribute("type", "number");
 	newInputFrom.className = "filter-form-from";
 
 	var newInputTo = document.createElement("input");
-	newInputTo.setAttribute("name",elem);
+	newInputTo.setAttribute("name",name);
 	newInputTo.setAttribute("type", "number");
 	newInputTo.className = "filter-form-to";
 
 	var labelFrom = document.createElement("label");
-	var labelFromText = document.createTextNode(filterStructJSON[elem].labelFrom);
-	labelFrom.setAttribute("for", elem);
+	var labelFromText = document.createTextNode(filterStructJSON[name].labelFrom);
+	labelFrom.setAttribute("for", name);
 	labelFrom.appendChild(labelFromText);
 
 	var labelTo = document.createElement("label");
-	var labelToText = document.createTextNode(filterStructJSON[elem].labelTo);
-	labelTo.setAttribute("for", elem);
+	var labelToText = document.createTextNode(filterStructJSON[name].labelTo);
+	labelTo.setAttribute("for", name);
 	labelTo.appendChild(labelToText);
 
 	form.appendChild(labelFrom);
@@ -158,13 +158,22 @@ function addInputRange(form, elem, filterStructJSON){
 	return [newInputFrom, newInputTo];
 }
 
-function addInputSelect(form, elem, filterStructJSON){
+/**
+ * Adds an input select element to form.
+ *
+ * @param      HTML object  	form              The form
+ * @param      string  			name              The name of element
+ * @param      JSON object  	filterStructJSON  The filter structure json
+ * @return     HTML object  	Return  HTML object of created select element.
+ */
+function addInputSelect(form, name, filterStructJSON){
 	var newInputSelect = document.createElement("select");
-	newInputSelect.setAttribute("name",elem);
+	newInputSelect.setAttribute("name",name);
 
+	console.log(typeof form);
 	var label = document.createElement("label");
-	var labelText = document.createTextNode(filterStructJSON[elem].label);
-	label.setAttribute("for", elem);
+	var labelText = document.createTextNode(filterStructJSON[name].label);
+	label.setAttribute("for", name);
 	label.appendChild(labelText);
 
 	//Options get dynamic
@@ -172,9 +181,9 @@ function addInputSelect(form, elem, filterStructJSON){
 	var optionsArray = [];
     for (let element of elements) 
     {
-    	let opt = element.getElementsByClassName(elem)[0];
+    	let opt = element.getElementsByClassName(name)[0];
     	if (opt != undefined){
-    	    optionsArray.push(element.getElementsByClassName(elem)[0].innerText);
+    	    optionsArray.push(element.getElementsByClassName(name)[0].innerText);
     	}
     }
     const options = [...new Set(optionsArray)]
