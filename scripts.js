@@ -17,8 +17,10 @@ function setupFilter(filterID,filterStructJSON){
 		if(filterStructJSON[key].type === "number"){
 			filterStructJSON[key].valueFrom = "";
 			filterStructJSON[key].valueTo = "";
-		} else {
+		} else if (filterStructJSON[key].type === "text"){
 			filterStructJSON[key].value = "";
+		} else {
+			filterStructJSON[key].values = [];
 		}
 	});
 
@@ -53,7 +55,7 @@ function filter(element, filterStructJSON){
 			filterStructJSON[element.name].value = element.value;
 			break;
 		case "select":
-			filterStructJSON[element.name].value = element.options[element.selectedIndex].text;
+			filterStructJSON[element.name].values = getSelectValues(element);;
 			break;
 		default:
 			break;
@@ -61,20 +63,22 @@ function filter(element, filterStructJSON){
 
 	var items = searchArea.querySelectorAll(".item"); //Todo
 
+	console.log(filterStructJSON);
 	items.forEach(function(item) {
 		var found = true;
 		keys.forEach(function(key){
 			var itemAttributes = item.getElementsByClassName(key);
 
-			if(filterStructJSON[key].type === "select" && itemAttributes.length === 0 && filterStructJSON[key].value !== ""){
-					found = false;
+			if(filterStructJSON[key].type === "select" && itemAttributes.length === 0 && filterStructJSON[key].values !== []){
+				found = false;
 			} 
 
 			for (let itemAttribute of itemAttributes){
 				// if not substr
-				if(filterStructJSON[key].type === "text" && !itemAttribute.innerText.includes(filterStructJSON[key].value)){
+				if(filterStructJSON[key].type === "text" && !itemAttribute.innerText.toLowerCase().includes(filterStructJSON[key].value.toLowerCase())){
 					found = false;
 				}
+
 				// if not in range
 				if(filterStructJSON[key].type === "number" &&
 				   !((Number(itemAttribute.innerText) >= Number(filterStructJSON[key].valueFrom) || filterStructJSON[key].valueFrom === "") &&
@@ -82,8 +86,16 @@ function filter(element, filterStructJSON){
 					found = false;
 				}
 				// if not selected value
-				if(filterStructJSON[key].type === "select" && !itemAttribute.innerText.includes(filterStructJSON[key].value)){
-					found = false;
+				if(filterStructJSON[key].type === "select"){
+					let values = filterStructJSON[key].values;
+					for (let index = 0; index < values.length; index++) {
+					    if (itemAttribute.innerText.includes(values[index])){
+							break;
+						}
+						if(index === values.length - 1){
+							found = false;
+						}
+					}
 				} 
 			};
 		});
@@ -208,8 +220,8 @@ function addInputRange(form, name, filterStructJSON){
 function addInputSelect(form, name, filterStructJSON){
 	var newInputSelect = document.createElement("select");
 	newInputSelect.setAttribute("name",name);
+	newInputSelect.multiple = true;
 
-	console.log(typeof form);
 	var label = document.createElement("label");
 	var labelText = document.createTextNode(filterStructJSON[name].label);
 	label.setAttribute("for", name);
@@ -249,3 +261,18 @@ function addInputSelect(form, name, filterStructJSON){
 	return newInputSelect;
 }
 
+
+function getSelectValues(select) {
+  var result = [];
+  var options = select && select.options;
+  var opt;
+
+  for (var i=0, iLen=options.length; i<iLen; i++) {
+    opt = options[i];
+
+    if (opt.selected && opt.value !== "") {
+      result.push(opt.value || opt.text);
+    }
+  }
+  return result;
+}
