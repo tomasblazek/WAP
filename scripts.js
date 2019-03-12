@@ -18,7 +18,7 @@ function setupFilter(filterID,filterStructJSON){
 			filterStructJSON[key].valueFrom = "";
 			filterStructJSON[key].valueTo = "";
 		} else if (filterStructJSON[key].type === "text"){
-			filterStructJSON[key].value = [];
+			filterStructJSON[key].value = "";
 		} else {
 			filterStructJSON[key].values = [];
 		}
@@ -92,7 +92,9 @@ function filter(element, filterStructJSON){
 					    if (itemAttribute.innerText.includes(values[index])){
 							break;
 						}
-						found = false;
+						if(index === values.length - 1){
+							found = false;
+						}
 					}
 				} 
 			};
