@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WAP - Výběr zboží - návod</title>
+</head>
+<body>
+
+<h3>Návod k použití</h3>
+<p>
+	<ol>
+		<li>Do html dokumentu, kde má být knihovna pro výběr zboží využávána je nutné vložit referenci na Javaskriptový soubor s knihovou.
+		&lt script src='filter.js'&gt&lt/script&gt
+		</li>
+		<li>
+			Vzhled filtru je definován v souboru style.css ve složce css a ten je tedy taky zapotřebí vložit na načátku html dokumentu.
+			&ltlink rel='stylesheet' type='text/css' href='css/style.css'&gt
+		</li>
+		<li>
+			Dále je nutné vložit identifikátor se jménem filtru do bloku (např. div), kde chceme provádět vyhledávání. &ltdiv id='my-fitler1'&gt
+		</li>
+		<li>
+			Každý blok v html souboru reprezentující prvek, který má být součástí vyhledávací množiny označit třídou s klíčovým slovem item. Uvnitř jednotlivých prvků je možné vkládat jednotlivé atributy, u kterých je nutné uvést třídu se jménem atributu, se kterou může filtr pracovat.
+		</li>
+		<li>
+			Konfigurační objekt pro vytvoření vlastního filtru má tento tvar.
+			var myFitler1Structure = {
+				"name": {
+					"label": "Název",
+					"type": "text",
+				},
+				"size": {
+					"labelFrom": "Od",
+					"labelTo": "Do",
+					"type": "number",
+				},
+				 "type": {
+					"label": "Typ",
+					"type": "select",
+				},
+			};
+			Každá položka na první úrovni značí atribut, dle kterého se bude vyhledávat. Káždy atribut musí mít ještě dva údaje. A to jsou název návěští (label) a typ pole (text, number, select). 
+		</li>
+		<li>
+			Nakonec zbýva v html dokumentu ještě zavolat inicializační funkci filtru z knihovny. K tomu je možné použít například funkci onload, která inicializuje filter po načtení okna. 
+			window.onload = setupFilter("my-fitler1", myFitler1Structure);
+		</li>
+	</ol>
+</p>
+</body>
+</html>
