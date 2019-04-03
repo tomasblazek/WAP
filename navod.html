@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>WAP - Výběr zboží - návod</title>
+<link rel='stylesheet' type='text/css' href='css/style.css'>
+</head>
+<body>
+<h1 class='title-1'>WAP - Výběr zboží návod</h1>
+<h3>Obecné informace</h3>
+<p>
+	Tento html dokument slouží jako návod k použití javaskriptového modulu <tt>filter.js</tt> pro výběr zboží do předmětu Internetové aplikace (WAP). Demo html s použitím zde <a href="demo.html">zde</a>.
+</p>
+
+<h3>Návod k použití</h3>
+<p>
+	<ol class="tutorial">
+		<li>Do html dokumentu, kde má být knihovna pro výběr zboží využávána je nutné vložit referenci na Javaskriptový soubor s knihovou.
+		<tt>&ltscript src='filter.js'&gt&lt/script&gt</tt>
+		</li>
+		<li>
+			Vzhled filtru je definován v souboru style.css ve složce css a ten je tedy taky zapotřebí vložit na načátku html dokumentu.
+			<tt>&ltlink rel='stylesheet' type='text/css' href='css/style.css'&gt</tt>
+		</li>
+		<li>
+			Dále je nutné vložit identifikátor se jménem filtru do bloku (např. div), kde chceme provádět vyhledávání. <tt>&ltdiv id='my-fitler1'&gt</tt>
+		</li>
+		<li>
+			Každý blok v html souboru reprezentující prvek, který má být součástí vyhledávací množiny označit třídou s klíčovým slovem item. Uvnitř jednotlivých prvků je možné vkládat jednotlivé atributy, u kterých je nutné uvést třídu se jménem atributu, se kterou může filtr pracovat.
+		</li>
+		<li>
+			Konfigurační objekt pro vytvoření vlastního filtru má tento tvar.
+		<pre>
+<!-- --><tt>var myFitler1Structure = {
+<!-- -->	"name": {
+<!-- -->		"label": "Název",
+<!-- -->		"type": "text",
+<!-- -->		},
+<!-- -->	"size": {
+<!-- -->		"labelFrom": "Od",
+<!-- -->		"labelTo": "Do",
+<!-- -->		"type": "number",
+<!-- -->	},
+<!-- -->	 "type": {
+<!-- -->		"label": "Typ",
+<!-- -->		"type": "select",
+<!-- -->	},
+<!-- -->};</tt>
+		</pre>
+			Každá položka na první úrovni značí atribut, dle kterého se bude vyhledávat. Káždy atribut musí mít ještě dva údaje. A to jsou název návěští (label) a typ pole (text, number, select). 
+		</li>
+		<li>
+			Nakonec zbýva v html dokumentu ještě zavolat inicializační funkci filtru z knihovny. K tomu je možné použít například funkci onload, která inicializuje filter po načtení okna. 
+			<tt>window.onload = setupFilter("my-fitler1", myFitler1Structure);</tt>
+		</li>
+	</ol>
+</p>
+</body>
+</html>
