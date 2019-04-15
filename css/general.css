@@ -1,5 +1,5 @@
 /**
- * CSS to Filter module to subject WAP 2019
+ * General CSS to subject WAP 2019
  * 
  * @author  Tomáš Blažek (xblaze31)
  */
@@ -51,30 +51,4 @@ body {
   font-weight: bold;
   font-size: 16px;
   margin: auto;
-}
-
-.filter form{
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-}
-
-.filter form input{
-  vertical-align: middle;
-  margin: 5px 10px 5px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
-
-.filter form select{
-  vertical-align: middle;
-  margin: 5px 10px 5px 0;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-}
-
-.filter form label {
-  margin: 5px 10px 5px 0;
 }

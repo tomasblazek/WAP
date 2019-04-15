@@ -1,0 +1,43 @@
+/**
+ * CSS to Filter module to subject WAP 2019
+ * 
+ * @author  Tomáš Blažek (xblaze31)
+ */
+
+/**
+ * Aligment of filter and display settings
+ */
+.filter form{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+/**
+ * Style of input box
+ */
+.filter form input{
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+/**
+ * Style of select input box
+ */
+.filter form select{
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+/**
+ * Style of input label
+ */
+.filter form label {
+  margin: 5px 10px 5px 0;
+}
